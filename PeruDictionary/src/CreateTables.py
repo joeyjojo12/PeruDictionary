@@ -12,7 +12,13 @@ try:
     cur = con.cursor()
     cur.executescript(""" 
         
+        DROP TABLE IF EXISTS Entry;
         
+        CREATE TABLE Entry(EntryId           INTEGER PRIMARY KEY, 
+                           Word              TEXT,
+                           Source            TEXT,
+                           Definition        TEXT,
+                           Notes             TEXT)        
         """)
     
     con.commit()
