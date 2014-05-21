@@ -12,10 +12,10 @@ def EntryInsertFromList(entries):
     
     return resultString
 
-def EntryReadSingleStatement(fields):    
-    return("SELECT * FROM ENTRY WHERE " + DictConstants.ENTRY_FIELDS[0] + " = '" + fields[0] + "';\n")
+def EntryReadSingleStatement(EntryID):    
+    return("SELECT * FROM ENTRY WHERE " + DictConstants.ENTRY_FIELDS[0] + " = '" + str(EntryID) + "';\n")
 
-def EntryReadAllStatement(PersonGroupID):
+def EntryReadAllStatement():
     return("SELECT * FROM ENTRY ORDER BY Word")
 
 def EntryInsertStatement(fields):
@@ -46,15 +46,15 @@ def EntryUpdateStatement(fields):
 def EntryDeleteStatement(fields):    
     return("DELETE FROM ENTRY WHERE " + DictConstants.ENTRY_FIELDS[0] + " = " + fields[0] + ";\n")
 
-def ReadEntry(fields):
-    database = DictDB.PeruDB()
-    output = database.querry(EntryReadSingleStatement(fields));
+def ReadEntry(EntryID):
+    database = DictDB.DictDB()
+    output = database.querry(EntryReadSingleStatement(EntryID));
     database.closeDB()
     return output
 
-def ReadEntries(PersonGroupID):
-    database = DictDB.PeruDB()
-    output = database.querry(EntryReadAllStatement(PersonGroupID));
+def ReadEntries():
+    database = DictDB.DictDB()
+    output = database.querry(EntryReadAllStatement());
     database.closeDB()
     return output    
     

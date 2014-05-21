@@ -20,7 +20,7 @@ def DatabaseBackup():
     print(backup)
     shutil.copyfile(Parameters.DICT_DB, backup)
 
-class PeruDB:
+class DictDB:
     
     con = None
     
@@ -32,7 +32,7 @@ class PeruDB:
             self.con = lite.connect(Parameters.DICT_DB)
             cur = self.con.cursor()
             cur.execute('SELECT SQLITE_VERSION()')
-            data = cur.fetchone()
+            #data = cur.fetchone()
     
         except lite.Error, e:
             print "Error %s:" % e.args[0]
